@@ -1,17 +1,33 @@
-import resolve from "rollup-plugin-node-resolve";
-import commonjs from "rollup-plugin-commonjs";
-import minify from "rollup-plugin-babel-minify";
-import pkg from "./package.json";
+import dts from "rollup-plugin-dts";
+import esbuild from "rollup-plugin-esbuild";
+
+const bundle = (config) => ({
+  ...config,
+  input: "src/index.ts",
+  external: (id) => !/^[./]/.test(id),
+});
 
 export default [
-  {
-    input: "dist/index.js",
+  bundle({
+    plugins: [esbuild()],
+    output: [
+      {
+        file: `dist/index.js`,
+        format: "cjs",
+        sourcemap: true,
+      },
+      {
+        file: `dist/index.mjs`,
+        format: "es",
+        sourcemap: true,
+      },
+    ],
+  }),
+  bundle({
+    plugins: [dts()],
     output: {
-      name: "documentBuilder",
-      file: pkg.browser,
-      format: "iife",
-      sourcemap: true,
+      file: `dist/index.d.ts`,
+      format: "es",
     },
-    plugins: [resolve(), commonjs(), minify({ comments: false })],
-  },
+  }),
 ];

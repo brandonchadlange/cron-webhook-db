@@ -1,8 +1,10 @@
 {
   "name": "cron-webhook-db",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
   "repository": "https://github.com/brandonchadlange/cron-webhook-db.git",
   "author": "Brandon <brandonlostboy@gmail.com>",
   "license": "MIT",
@@ -16,9 +18,12 @@
   "devDependencies": {
     "@types/pg": "^8.11.6",
     "drizzle-kit": "^0.22.7",
+    "esbuild": "^0.21.5",
     "rollup": "^4.18.0",
     "rollup-plugin-babel-minify": "^10.0.0",
     "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-dts": "^6.1.1",
+    "rollup-plugin-esbuild": "^6.1.1",
     "rollup-plugin-node-resolve": "^5.2.0",
     "typescript": "^5.5.2"
   },
