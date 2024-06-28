@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1719555053588,
+      "tag": "0000_elite_moon_knight",
+      "breakpoints": true
+    }
+  ]
+}
